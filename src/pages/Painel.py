@@ -6,9 +6,9 @@ class Painel:
 
     def __init__(self): pass
     
-    def clica_botao_exportar(self, browser):
-        btn_exportar = WebDriverWait(browser, 10).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, "export_data"))
+    def clica_botao_exportar(self, browser, xpath):
+        btn_exportar = WebDriverWait(browser, 60).until(
+            EC.element_to_be_clickable((By.XPATH, xpath))
         )
         btn_exportar.click()
  

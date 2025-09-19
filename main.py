@@ -27,10 +27,15 @@ class RunScraping():
         self.browser = Browser().get_browser()
         
     def executa_scraping(self) -> None:
-        self.browser.get("https://investsuspaineis.saude.gov.br/extensions/CGIN_ONE/CGIN_ONE.html")  
+        self.browser.get("https://investsuspaineis.saude.gov.br/extensions/CGIN_PAINEL_PAGAMENTOS_CGAC_CGOEFC/CGIN_PAINEL_PAGAMENTOS_CGAC_CGOEFC.html")  
         painel = Painel()
-        painel.clica_botao_exportar(self.browser)
-        helpers.renomeia_arquivo()
+
+        xpath_btn1 = '//*[@id="tabelaInstrumentoscFJpn"]'
+        xpath_btn2 = '//*[@id="tabelaProgramacaojsKCmk"]'
+
+        painel.clica_botao_exportar(self.browser, xpath_btn1)
+        painel.clica_botao_exportar(self.browser, xpath_btn2)
+        helpers.limpa_e_renomeia()
         
     def fecha_browser(self) -> None:
         """
